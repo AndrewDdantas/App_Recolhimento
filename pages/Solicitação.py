@@ -34,17 +34,21 @@ with st.form('Register'):
     button_submit = st.form_submit_button('Registrar')
     
     if button_submit:
-
-        if P.validar(P) == 'no':
-            st.error('Verifique os dados inseridos.')
-            sleep(1)
-            st.rerun()
-        else: 
-            P.arquivo = C.upload_arquivo(P.arquivo, P.pedido) 
-            teste = C.solicitacao(P)
-            if teste == 'Pedido já cadastrado.':
-                st.error(teste)
-            else:
-                st.warning(teste)
-                sleep(2)
-                streamlit_js_eval(js_expressions="parent.window.location.reload()")
+        try:
+            if P.validar(P) == 'no':
+                st.error('Verifique os dados inseridos.')
+                sleep(1)
+                st.rerun()
+            else: 
+                P.arquivo = C.upload_arquivo(P.arquivo, P.pedido) 
+                teste = C.solicitacao(P)
+                if teste == 'Pedido já cadastrado.':
+                    st.error(teste)
+                else:
+                    st.warning(teste)
+                    sleep(2)
+                    streamlit_js_eval(js_expressions="parent.window.location.reload()")
+        except:
+                st.error('Ocorreu um erro, favor tente novamente.')
+                sleep(1)
+                st.rerun()
