@@ -3,6 +3,7 @@ from streamlit_autorefresh import st_autorefresh
 from models.Pedidos import Solicitacao as P
 import services.connect as C
 from time import sleep
+from streamlit_js_eval import streamlit_js_eval
 
 
 try:
@@ -45,3 +46,5 @@ with st.form('Register'):
                 st.error(teste)
             else:
                 st.warning(teste)
+                sleep(2)
+                streamlit_js_eval(js_expressions="parent.window.location.reload()")
