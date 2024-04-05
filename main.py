@@ -16,7 +16,7 @@ if login_button:
         st.session_state['Login'] = 'Logado'
         st.write('Login realizado com sucesso!')
         sleep(2)
-        st.switch_page('./pages/1Registro_insucesso.py')
+        st.switch_page('./pages/Solicitação.py')
         
     else:
         st.write("Favor verificar os dados.")
