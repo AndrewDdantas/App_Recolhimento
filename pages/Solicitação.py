@@ -19,7 +19,7 @@ st.title('Solicitação de Recolhimento')
 
 with st.form('Register'):
     col1, col2 = st.columns(2)
-    P.filial = col1.number_input("Filial", step=1)
+    P.filial = col1.text_input("Filial", value=st.session_state['Usuário'])
     P.pedido = col2.number_input("Pedido", step=1)
     P.pedido_novo = col1.number_input("Pedido Novo", step=1)
     P.item = col2.number_input("Item", step=1)

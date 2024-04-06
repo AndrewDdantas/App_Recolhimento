@@ -4,7 +4,7 @@ import services.connect as C
 
 st.title("Bem vindo ao app de insucesso do Magazine Luiza.")
 
-User = st.selectbox('Usuário', [1286,1287,1288,1289])
+User = st.text_input('Usuário')
 
 Pass = st.text_input("Senha")
 

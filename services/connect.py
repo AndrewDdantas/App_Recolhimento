@@ -2,7 +2,7 @@ import gspread as gs
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
-import os
+from datetime import timedelta, datetime
 
 
 scope = ['https://spreadsheets.google.com/feeds',
@@ -28,9 +28,11 @@ def solicitacao(s):
     if str(s.pedido) in l:
         return 'Pedido já cadastrado.'
     
-    last_row = 'a' + str(len(pedidos) + 1)
+    last_row = 'a' + str(len(pedidos) + 1)    
+    now = datetime.now() - timedelta(hours=3)
+    now = now.strftime('%d/%m/%Y %H:%M:%S')
 
-    base.update([[s.filial, s.pedido, s.pedido_novo, s.item, s.descricao, s.motivo, s.obs, s.destino, s.regiao, s.arquivo]], last_row)
+    base.update([[now,s.filial, s.pedido, s.pedido_novo, s.item, s.descricao, s.motivo, s.obs, s.destino, s.regiao, s.arquivo]], last_row)
     return 'Pedido Registrado'
 
 
