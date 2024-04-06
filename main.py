@@ -14,11 +14,11 @@ if login_button:
     if Pass == '123':
         st.session_state['Usuário'] = User
         st.session_state['Login'] = 'Logado'
-        st.write('Login realizado com sucesso!')
+        st.warning('Login realizado com sucesso!')
         sleep(2)
         st.switch_page('./pages/Solicitação.py')
         
     else:
-        st.write("Favor verificar os dados.")
+        st.error("Favor verificar os dados.")
         
 
