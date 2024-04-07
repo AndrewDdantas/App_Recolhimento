@@ -4,7 +4,7 @@ import services.connect as C
 
 st.title("Bem vindo ao app de recolhimentos do Magazine Luiza CD 2650.")
 
-with st.form('LoginForm')
+with st.form('LoginForm'):
     User = st.number_input('Filial',step=1)
 
     Pass = st.text_input("Senha")
