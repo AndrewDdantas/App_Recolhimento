@@ -1,5 +1,10 @@
 import streamlit as st
 
+try:
+    log = st.session_state['Login']
+except:
+    st.switch_page('./main.py')
+
 st.title('SEJA BEM VINDO AO APP DO ATENDIMENTO CD 2650')
 
 st.text('O que você deseja?')
