@@ -36,9 +36,8 @@ with st.form('Register'):
     if button_submit:
         try:
             if P.validar(P) == 'no':
-                st.error('Verifique os dados inseridos.')
-                sleep(1)
-                st.rerun()
+                st.error('Verifique os dados inseridos, todos são obrigatórios, exceto o pedido novo.')
+                sleep(3)
             else: 
                 P.arquivo = C.upload_arquivo(P.arquivo, P.pedido) 
                 teste = C.solicitacao(P)
