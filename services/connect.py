@@ -3,6 +3,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from datetime import timedelta, datetime
+import pandas as pd
 
 
 scope = ['https://spreadsheets.google.com/feeds',
