@@ -17,7 +17,7 @@ with st.form('LoginForm'):
             st.session_state['Login'] = 'Logado'
             st.warning('Login realizado com sucesso!')
             sleep(2)
-            st.switch_page('./pages/Solicitação.py')
+            st.switch_page('./pages/HomeFilial.py')
             
         else:
             st.error("Favor verificar os dados.")

@@ -59,3 +59,14 @@ def upload_arquivo(arquivo, nome):
     return file_link
 
 
+def consultar_pedidos(pedido=None, filial=0):
+    df = pd.DataFrame(base.get_values('a2:l'))
+    df = df[[0,1,2,3,8,11]]
+    df.columns = ['Registro', 'Filial', 'Pedido', 'Pedido Novo', 'Destino', 'Status']
+    df['Pedido'] =  df['Pedido'].astype(str)
+    df = df.loc[df['Filial'] == filial]
+    if pedido:
+        return df.loc[df['Pedido'] == str(pedido)]
+    else:
+        return df
+    

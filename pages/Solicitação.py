@@ -1,18 +1,23 @@
 import streamlit as st
-from streamlit_autorefresh import st_autorefresh
 from models.Pedidos import Solicitacao as P
 import services.connect as C
 from time import sleep
 from streamlit_js_eval import streamlit_js_eval
 
+st.set_page_config(
+    page_title="Solicitação de Recolhimento",
+    page_icon=":chart_with_upwards_trend:",
+    layout="wide",  # Pode ser "wide" ou "centered"
+    initial_sidebar_state="collapsed",  # Pode ser "auto", "expanded", ou "collapsed"
+)
 
 try:
     log = st.session_state['Login']
 except:
     st.switch_page('./main.py')
 
-st_autorefresh(interval=1000 * 60, limit=100, key="teste_atualizacao")
-
+st.sidebar.page_link('./pages/HomeFilial.py', label='Home')
+st.sidebar.page_link('./pages/Status_Pedidos.py')
 
 st.title('Solicitação de Recolhimento')
 
