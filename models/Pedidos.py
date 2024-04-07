@@ -12,7 +12,7 @@ class Solicitacao:
         self.arquivo = arquivo# obrigatório
     
     def validar(self):
-        if self.filial > 0 and self.pedido > 0 and self.item > 0 and self.descricao and self.destino != '' and self.motivo and self.obs and self.regiao and self.arquivo:
+        if self.pedido > 0 and self.item > 0 and self.descricao and self.destino != '' and self.motivo and self.obs and self.regiao and self.arquivo:
             return 'ok'
         else:
             return 'no'
