@@ -33,7 +33,7 @@ def solicitacao(s):
     now = datetime.now() - timedelta(hours=3)
     now = now.strftime('%d/%m/%Y %H:%M:%S')
 
-    base.update([[now,s.filial, s.pedido, s.pedido_novo, s.item, s.descricao, s.motivo, s.obs, s.destino, s.regiao, s.arquivo]], last_row)
+    base.update([[now,s.filial, s.pedido, s.pedido_novo, s.item, s.descricao, s.motivo, s.obs, s.destino, s.regiao, s.arquivo, 'Solicitado Filial']], last_row)
     return 'Pedido Registrado'
 
 
