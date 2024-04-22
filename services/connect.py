@@ -40,12 +40,14 @@ def solicitacao(s):
 
 def upload_arquivo(arquivo, nome):
     nome = str(nome)
+    tipo = arquivo.type
+    tipo = tipo.split('/')[1]
     
-    with open(nome + ".pdf", "wb") as f:
+    with open(nome + f".{tipo}", "wb") as f:
         f.write(arquivo.read())
 
-    file_metadata = {'name': f'{nome}.pdf'}
-    media = MediaFileUpload(nome + ".pdf", mimetype='application/pdf')
+    file_metadata = {'name': f'{nome}.{tipo}'}
+    media = MediaFileUpload(nome + f".{tipo}", mimetype=arquivo.type)
     file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
 
   
