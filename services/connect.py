@@ -31,7 +31,7 @@ drive_service = build('drive', 'v3', credentials=credentials)
 
 client = gs.authorize(credentials)
 
-sheet = client.open_by_key('1eqYyWwshEQPo0DpkhdgrG2ZLycJrj8kGprgRoHrnAGc')
+sheet = client.open_by_key(st.secrets['sheet'])
 
 base = sheet.worksheet('Base')
 
