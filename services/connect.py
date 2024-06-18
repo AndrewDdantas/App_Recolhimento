@@ -112,3 +112,10 @@ def consultar_pedidos_len(pedido=None, filial=0):
         return df.loc[df['Pedido'] == str(pedido)]
     else:
         return df
+
+def transportadoras():
+    transportadora = base_cad.get_values('e2:e')
+    trans = []
+    for tr in transportadora: 
+        trans.append(tr[0])
+    return trans
