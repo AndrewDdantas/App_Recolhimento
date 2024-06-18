@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import services.connect as C
 from time import sleep
+from streamlit_js_eval import streamlit_js_eval
 
 st.set_page_config(
     page_title="Solicitação de Recolhimento",
