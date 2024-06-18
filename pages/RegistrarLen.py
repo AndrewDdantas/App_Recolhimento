@@ -38,7 +38,7 @@ except:
     ''
 
 with st.form('Solicitar'):
-    filial = st.number_input('Filial', step=1)
+    filial = st.number_input('Filial', value=st.session_state['Usuário'])
     pedido = st.number_input('Pedido', step=1, min_value=900000000)
     transportadora = st.selectbox('Transportadora', C.transportadoras())
     nota = st.file_uploader('Nota Fiscal')
