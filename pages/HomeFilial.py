@@ -8,6 +8,7 @@ except:
 st.title('SEJA BEM VINDO AO APP DO ATENDIMENTO CD 2650')
 
 st.text('O que você deseja?')
-c1, c2 = st.columns(2)
+c1, c2, c3 = st.columns(3)
 c1.page_link('./pages/Solicitação.py')
 c2.page_link('./pages/Status_Pedidos.py')
+c3.page_link('./pages/RegistrarLen.py')
