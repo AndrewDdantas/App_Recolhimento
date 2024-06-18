@@ -33,7 +33,8 @@ try:
             lote = C.registrar_pedidos(st.session_state['df'])
             st.session_state['df'] = pd.DataFrame()
         st.warning(f'Foi gerado o Lote: {lote}')
-        st.rerun()
+        sleep(2)
+        streamlit_js_eval(js_expressions="parent.window.location.reload()")
 except:
     ''
 
