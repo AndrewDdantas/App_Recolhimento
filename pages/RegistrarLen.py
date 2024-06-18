@@ -3,6 +3,19 @@ import pandas as pd
 import services.connect as C
 from time import sleep
 
+st.set_page_config(
+    page_title="Solicitação de Recolhimento",
+    page_icon=":chart_with_upwards_trend:",
+    layout="wide",  # Pode ser "wide" ou "centered"
+    initial_sidebar_state="collapsed",  # Pode ser "auto", "expanded", ou "collapsed"
+)
+
+try:
+    log = st.session_state['Login']
+except:
+    st.switch_page('./main.py')
+
+
 if 'df' not in st.session_state:
     data = {'Filial': [],
         'Pedido': [],
