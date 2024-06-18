@@ -1,5 +1,5 @@
 import streamlit as st
-from services.connect import consultar_pedidos
+from services.connect import consultar_pedidos_len
 
 st.set_page_config(
     page_title="Status dos Pedidos",
