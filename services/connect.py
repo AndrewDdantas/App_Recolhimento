@@ -35,6 +35,10 @@ sheet = client.open_by_key(st.secrets['sheet'])
 
 base = sheet.worksheet('Base')
 
+base_len = sheet.worksheet('Base_Len')
+hist_len = sheet.worksheet('Histórico_Len')
+base_cad = client.open_by_key(st.secrets['base_cad']).worksheet('CAD')
+
 def solicitacao(s):
     pedidos = base.get_values('B:B')
     l = []
@@ -88,3 +92,23 @@ def consultar_pedidos(pedido=None, filial=0):
     else:
         return df
     
+def registrar_pedidos(df):
+    last_row = len(base_len.get_values('a:A')) + 1
+    last_lot = int(max(base_len.get_values('e2:e'))[0]) + 1
+    now = (datetime.now() - timedelta(hours=3)).strftime('%d/%m/%Y %H:%M:%S')
+    df['registro'] = now
+    df['lote'] = last_lot
+    df = df[['registro','Filial','Pedido','Transportadora','lote','Nota']]
+    base_len.update(df.values.tolist(), 'a'+str(last_row))
+    return last_lot
+
+def consultar_pedidos_len(pedido=None, filial=0):
+    df = pd.DataFrame(base_len.get_values('a2:h'))
+    df = df[[0,1,2,3,4,5,6,7]]
+    df.columns = ['Registro', 'Filial', 'Pedido', 'Transportadora', 'Lote', 'Nota', 'Ult_Atualização', 'Status']
+    df['Pedido'] =  df['Pedido'].astype(str)
+    df = df.loc[df['Filial'] == str(filial)]
+    if pedido:
+        return df.loc[df['Pedido'] == str(pedido)]
+    else:
+        return df
