@@ -102,7 +102,7 @@ def registrar_pedidos(df):
     base_len.update(df.values.tolist(), 'a'+str(last_row))
     return last_lot
 
-def consultar_pedidos_len(pedido=None, filial=0):
+def consultar_pedidos_saida_loja(pedido=None, filial=0):
     df = pd.DataFrame(base_len.get_values('a2:h'))
     df = df[[0,1,2,3,4,5,6,7]]
     df.columns = ['Registro', 'Filial', 'Pedido', 'Transportadora', 'Lote', 'Nota', 'Ult_Atualização', 'Status']
