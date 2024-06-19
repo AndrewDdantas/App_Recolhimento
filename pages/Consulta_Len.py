@@ -1,8 +1,8 @@
 import streamlit as st
-from services.connect import consultar_pedidos_len
+from services.connect import consultar_pedidos_saida_loja
 
 st.set_page_config(
-    page_title="Status dos Pedidos",
+    page_title="Status dos Pedidos Saída Loja",
     page_icon=":chart_with_upwards_trend:",
     layout="wide",  # Pode ser "wide" ou "centered"
     initial_sidebar_state="collapsed",  # Pode ser "auto", "expanded", ou "collapsed"
@@ -24,6 +24,6 @@ with st.form("FormStatus"):
     button = st.form_submit_button('Consultar')
 
     if button:
-        st.table(consultar_pedidos_len(Ped, st.session_state['Usuário']).assign(hack='').set_index('hack'))
+        st.table(consultar_pedidos_saida_loja(Ped, st.session_state['Usuário']).assign(hack='').set_index('hack'))
     else:
-        st.table(consultar_pedidos_len(filial=st.session_state['Usuário']).assign(hack='').set_index('hack'))
+        st.table(consultar_pedidos_saida_loja(filial=st.session_state['Usuário']).assign(hack='').set_index('hack'))
