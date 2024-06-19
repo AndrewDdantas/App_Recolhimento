@@ -52,7 +52,7 @@ def solicitacao(s):
     now = datetime.now() - timedelta(hours=3)
     now = now.strftime('%d/%m/%Y %H:%M:%S')
 
-    base.update([[now,s.filial, s.pedido, s.pedido_novo, s.item, s.descricao, s.motivo, s.obs, s.destino, s.regiao, s.arquivo, 'Solicitado Filial']], last_row)
+    base.update([[now,s.filial, s.pedido, s.pedido_novo, s.item, s.descricao, s.motivo, s.obs, s.destino, s.regiao, s.arquivo, 'Solicitado Filial']], last_row,value_input_option='USER_ENTERED')
     return 'Pedido Registrado'
 
 
@@ -99,7 +99,7 @@ def registrar_pedidos(df):
     df['registro'] = now
     df['lote'] = last_lot
     df = df[['registro','Filial','Pedido','Transportadora','lote','Nota']]
-    base_len.update(df.values.tolist(), 'a'+str(last_row))
+    base_len.update(df.values.tolist(), 'a'+str(last_row),value_input_option='USER_ENTERED')
     return last_lot
 
 def consultar_pedidos_saida_loja(pedido=None, filial=0):
