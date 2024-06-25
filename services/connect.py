@@ -93,14 +93,17 @@ def consultar_pedidos(pedido=None, filial=0):
         return df
     
 def registrar_pedidos(df):
-    last_row = len(base_len.get_values('a:A')) + 1
-    last_lot = int(max(base_len.get_values('e2:e'))[0]) + 1
-    now = (datetime.now() - timedelta(hours=3)).strftime('%d/%m/%Y %H:%M:%S')
-    df['registro'] = now
-    df['lote'] = last_lot
-    df = df[['registro','Filial','Pedido','Transportadora','lote','Nota']]
-    base_len.update(df.values.tolist(), 'a'+str(last_row),value_input_option='USER_ENTERED')
-    return last_lot
+    try:
+        last_row = len(base_len.get_values('a:A')) + 1
+        last_lot = int(max(base_len.get_values('e2:e'))[0]) + 1
+        now = (datetime.now() - timedelta(hours=3)).strftime('%d/%m/%Y %H:%M:%S')
+        df['registro'] = now
+        df['lote'] = last_lot
+        df = df[['registro','Filial','Pedido','Transportadora','lote','Nota']]
+        base_len.update(df.values.tolist(), 'a'+str(last_row),value_input_option='USER_ENTERED')
+        return last_lot
+    except:
+        return 'Deu Merda'
 
 def consultar_pedidos_saida_loja(pedido=None, filial=0):
     df = pd.DataFrame(base_len.get_values('a2:h'))
