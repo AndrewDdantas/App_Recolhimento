@@ -36,8 +36,8 @@ try:
         st.warning(f'Foi gerado o Lote: {lote}')
         sleep(2)
         streamlit_js_eval(js_expressions="parent.window.location.reload()")
-except:
-    ''
+except Exception as e:
+    print(e)
 
 with st.form('Solicitar'):
     filial = st.number_input('Filial', value=st.session_state['Usuário'])
