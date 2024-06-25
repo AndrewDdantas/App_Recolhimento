@@ -103,7 +103,7 @@ def registrar_pedidos(df):
         base_len.update(df.values.tolist(), 'a'+str(last_row),value_input_option='USER_ENTERED')
         return last_lot
     except:
-        return 'Deu Merda'
+        return 'Deu Erro'
 
 def consultar_pedidos_saida_loja(pedido=None, filial=0):
     df = pd.DataFrame(base_len.get_values('a2:h'))
